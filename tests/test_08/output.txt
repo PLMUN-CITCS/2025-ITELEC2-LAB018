@@ -1,0 +1,2 @@
+Enter a day of the week: Invalid day entered.
+It's a Weekday!
