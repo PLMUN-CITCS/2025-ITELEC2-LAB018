@@ -1,7 +1,7 @@
-# 2025-ITELEC2-LAB016
+# 2025-ITELEC2-LAB018
 Week 05 - Working with Functions
 
-Laboratory # 16 - Guided Coding Exercise: Basic Function Definition and Calling
+Laboratory # 18 - Guided Coding Exercise: Nested Functions and Reusing User-Defined Functions
 
 ## **Instructions**
 
@@ -77,95 +77,88 @@ Only perform this if this is the first time you will setup your Git Environment
 
 ### **Step 3: Complete the Assignment**
 
-**Laboratory # 16 - Guided Coding Exercise: Basic Function Definition and Calling**
+**Laboratory # 18 - Guided Coding Exercise: Nested Functions and Reusing User-Defined Functions**
 
    **Objective:**
-   - Understand the use of a while loop for repetitive tasks.
-   - Learn how to terminate a loop using a sentinel value.
-   - Recognize the advantages of looping for dynamic, user-driven processes.
-   - Practice input validation and error handling.
+   - Learn to break down a complex task into smaller, more manageable functions.
+   - Understand the concept of nested function calls (calling a function within another function).
+   - Practice writing functions that work together to achieve a larger goal.
+   - Reinforce the benefits of function reuse for code modularity and efficiency.
 
-   **Desired Output (Example 1):**
+   **Desired Output:**
    ```bash
-   Enter a number (or 'stop' to finish): 5
-   Enter a number (or 'stop' to finish): 10
-   Enter a number (or 'stop' to finish): 3
-   Enter a number (or 'stop' to finish): stop
-   The total sum is: 18
+   The sum of squares is: 29
    ```
-      
+   (Since 2² + 3² + 4² = 4 + 9 + 16 = 29)
+   
    **Notable Observations (to be discussed after completing the exercise):**
-   - Python does not have a built-in switch statement like some other languages. Dictionaries provide a clean and efficient way to achieve similar functionality.
-   - The .get() method of a dictionary allows you to retrieve a value associated with a key. Crucially, it also lets you specify a default value that will be returned if the key is not found in the dictionary. This is very useful for handling cases where the user might enter invalid input.
-   - The ternary operator (value_if_true if condition else value_if_false) provides a concise way to write conditional expressions in a single line. It's useful for simple conditions where you want to assign one of two values.
-   - String methods like .strip() and .lower() are essential for normalizing user input, making your code more robust.
+   - Nested Function Calls: The sum_of_squares() function calls the square() function within its loop. This is an example of a nested function call.
+   - Function Reuse: The square() function is reused multiple times within the sum_of_squares() function, demonstrating the modularity and efficiency of using functions.
+   - Breaking Down Complexity: The problem of calculating the sum of squares is broken down into smaller, more manageable functions (square and sum_of_squares), making the code easier to understand, test, and maintain.
 
    **Python Best Practices**
-   - Input Normalization: Always normalize user input (e.g., convert to lowercase using .lower() and remove leading/trailing whitespace using .strip()) to handle variations in user input and prevent unexpected behavior.
-   - Dictionary .get() with Default: Use the .get() method with a default value when retrieving values from a dictionary. This is a best practice, especially when dealing with user input, as it provides a clean way to handle cases where the key might not exist.
-   - Readability: Even with concise constructs like the ternary operator, prioritize code readability. If a ternary expression becomes too complex, consider using a regular if...else statement for clarity.
-   - Descriptive Variable Names: Use meaningful variable names (e.g., day_messages, day, message, day_type).
-   - Comments: Add comments to explain your logic, especially when simulating control flow structures like a switch statement.
-   - Test Thoroughly: Test your code with various inputs, including valid days of the week (with different capitalization and spacing) and invalid days, to ensure it handles all cases correctly.
+   - Single Responsibility Principle: Keep functions focused on a single, well-defined task. This makes your code more modular and easier to reason about.
+   - Docstrings: Write clear and concise docstrings to describe the purpose and parameters of each function.
+   - Meaningful Names: Use descriptive variable names and maintain consistency in your naming conventions.
+   - Indentation: Proper indentation is crucial for readability and to define the structure of your code, especially when using nested functions.
+   - Test Thoroughly: Test your functions individually and together to ensure they work correctly in all scenarios.
 
    **Step-by-Step Instructions:**
 
    1. Setting up: Open your preferred Python environment or Text Editor, and create a Python Script.
-      - Required Filename: `while_loop_sentinel.py`
+      - Required Filename: `nested_functions.py`
       
-   2. Initialize the sum variable:
-      - Create a variable named total_sum and initialize it to 0. This variable will store the sum of the numbers entered by the user.
+   2. Define a function to calculate the square of a number (square):
+      - Use the def keyword followed by the function name (square).
+      - Add parentheses () and include a parameter name (e.g., num) inside the parentheses. This defines the input that the function will accept.
+      - End the line with a colon :.
+      - Inside the function definition (indented), calculate the square of the num (using num * num or num ** 2).
+      - Use the return statement to return the calculated square.
 ```python
-total_sum = 0
+def square(num):
+    """Returns the square of the given number."""
+    return num * num  # Or num ** 2
 ```
       
-   3.  Start a while loop that continues indefinitely:
-      - Use a while True loop. This creates a loop that will run continuously until explicitly stopped using the break statement.
+   3. Define a function to calculate the sum of squares (sum_of_squares):
+      - Use the def keyword followed by the function name (sum_of_squares).
+      - Add parentheses () and include a parameter name (e.g., numbers) inside the parentheses. This will be a list of numbers.
+      - End the line with a colon :.
+      - Inside the function definition (indented):
+         - Initialize a variable named total to 0. This will store the sum of squares.
+         - Use a for loop to iterate through each number (n) in the numbers list.
+         - Inside the loop, call the square() function that you defined earlier, passing n as an argument. This calculates the square of the current number.
+         - Add the returned square to the total.
+      - After the loop, use the return statement to return the calculated total.
 ```python
-while True:
+def sum_of_squares(numbers):
+    """Returns the sum of the squares of the numbers in the list."""
+    total = 0
+    for n in numbers:
+        total += square(n)  # Call the square function and add to total
+    return total
 ```
 
-   4. Prompt the user for input:
-      - Inside the while loop, use the input() function to prompt the user to enter a number or "stop" to finish. Store the input in a variable named user_input.
+   4. Define a list of numbers and call the function:
+      - After the function definitions (not indented), create a list of numbers (e.g., ``) and store it in a variable named numbers_list.
+      - Call the sum_of_squares() function, passing numbers_list as an argument. Store the returned result in a variable named result.
 ```python
-    user_input = input("Enter a number (or 'stop' to finish): ")
+numbers_list = [2, 3, 4]
+result = sum_of_squares(numbers_list)
 ```
 
-   5. Check if the sentinel value 'stop' is entered:
-      - Convert the user_input to lowercase using .lower() and remove any leading/trailing whitespace using .strip(). - This handles variations in user input (e.g., "Stop", " STOP ", "stop").
-      - Use an if statement to check if the normalized user_input is equal to "stop".
-      - If it is, use the break statement to exit the while loop.
+   5. Print the final result:
+      - Use the print() function with an f-string to display the final result with a descriptive message.
 ```python
-    if user_input.strip().lower() == "stop":
-        break  # Exit the loop
+print(f"The sum of squares is: {result}")
 ```
 
-   6. Convert input to a number and add to total_sum (with error handling):
-      - After the if statement that checks for "stop", use a try-except block to handle potential ValueError exceptions that might occur if the user enters something that is not a number.
-      - Inside the try block:
-         - Convert the user_input to a float (to allow for decimal numbers).
-         - Add the converted number to total_sum using the += operator.
-      - Inside the except ValueError block:
-         - Print an error message to the user indicating that the input was invalid.
-```python
-    try:
-        number = float(user_input)
-        total_sum += number
-    except ValueError:
-        print("Invalid input. Please enter a numeric value or 'stop'.")
-```
-
-   7. Print the final total sum:
-      - After the while loop has finished (outside the loop), use the print() function to display the final value of total_sum.
-```python
-print("The total sum is:", total_sum)
-```
-   8. Complete Code: Combine the steps above to form the complete program.
-   9. Run the code: Execute your Python code.
-   10. Observe the output: Test the program by entering various numbers and then entering "stop" (in different cases and with extra spaces).  Also, test it by entering non-numeric input to see how the error handling works.
+   6. Complete Code: Combine the steps above to form the complete program.
+   7. Run the code: Execute your Python code.
+   8. Observe the output: Verify that the output matches the "Desired Output" shown above.
 
    **Conclusion**
-   This exercise demonstrated the use of a while loop for handling user input with a sentinel value.  You learned how to create a loop that continues until a specific condition is met (in this case, the user entering "stop").  You also practiced input validation and error handling using try-except blocks.  The while loop and sentinel values are very useful for creating interactive programs where the number of iterations depends on user input.  Robust error handling is crucial for creating reliable and user-friendly programs.
+   This exercise demonstrated the power of using nested functions and reusing user-defined functions to solve more complex problems.  You learned how to break down a task into smaller, more manageable functions and how to call functions within other functions.  By reusing functions, you can write more efficient and modular code that is easier to understand and maintain.  This approach is essential for building larger and more complex Python programs.
 
 ### **Step 4: Push Changes to GitHub**
 Once you've completed your changes, follow these steps to upload your work to your GitHub repository.
@@ -189,7 +182,7 @@ git add .
    Write a meaningful commit message:
    
 ```bash
-git commit -m "Submitting Python Week 04 - Laboratory # 16"
+git commit -m "Submitting Python Week 04 - Laboratory # 18"
 ```
    
 4. Push your changes to GitHub:
