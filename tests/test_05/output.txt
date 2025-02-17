@@ -1,2 +1,0 @@
-Enter a day of the week: Today is Friday.
-It's a Weekday!

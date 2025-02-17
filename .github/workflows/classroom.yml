@@ -15,27 +15,27 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install pylint
-    - name: File Existence Check - switch_ternary_operator.py
+    - name: File Existence Check - nested_functions.py
       id: file-existence-check
       uses: classroom-resources/autograding-command-grader@v1
       with:
-        test-name: File Existence Check - switch_ternary_operator.py
-        command: "test -f switch_ternary_operator.py"
+        test-name: File Existence Check - nested_functions.py
+        command: "test -f nested_functions.py"
         timeout: 10
         max-score: 10
-    - name: Syntax Check - switch_ternary_operator.py
+    - name: Syntax Check - nested_functions.py
       id: syntax-check
       uses: classroom-resources/autograding-command-grader@v1
       with:
-        test-name: Syntax Check - switch_ternary_operator.py
-        command: "pylint switch_ternary_operator.py --disable=C"
+        test-name: Syntax Check - nested_functions.py
+        command: "pylint nested_functions.py --disable=C"
         timeout: 10
         max-score: 30
-    - name: Run Check - switch_ternary_operator.py
+    - name: Run Check - nested_functions.py
       id: logic-check
       uses: classroom-resources/autograding-command-grader@v1
       with:
-        test-name: Run Check - switch_ternary_operator.py
+        test-name: Run Check - nested_functions.py
         setup-command: "chmod +x ./run_tests.sh"
         command: "./run_tests.sh"
         timeout: 10

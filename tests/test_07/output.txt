@@ -1,2 +1,0 @@
-Enter a day of the week: Today is Sunday.
-It's a Weekend!
